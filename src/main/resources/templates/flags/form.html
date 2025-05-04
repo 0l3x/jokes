@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${titulo}">Formulario</title>
+</head>
+<body>
+  <h1 th:text="${titulo}">Formulario</h1>
+
+  <form th:action="@{/jokes/form}" th:object="${joke}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Text1: <input type="text" th:field="*{text1}" /></label><br/>
+    <label>Text2: <input type="text" th:field="*{text2}" /></label><br/>
+
+    <label>Flag:
+      <select th:field="*{flag.id}">
+        <option th:each="flag : ${flags}" th:value="${flag.id}" th:text="${flag.name}"></option>
+      </select>
+    </label><br/>
+
+    <button type="submit">Guardar</button>
+  </form>
+
+  <a th:href="@{/jokes}">Volver al listado</a>
+</body>
+</html>

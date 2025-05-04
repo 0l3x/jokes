@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${titulo}">Listado</title>
+</head>
+<body>
+  <h1 th:text="${titulo}">Listado de chistes</h1>
+
+  <a th:href="@{/jokes/form}">Crear nuevo chiste</a>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Texto 1</th>
+        <th>Texto 2</th>
+		<th>Categoría</th>
+		<th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+	<tbody>
+	  <tr th:each="joke : ${jokes}">
+	    <td th:text="${joke.id}">1</td>
+	    <td th:text="${joke.text1}">Texto 1</td>
+	    <td th:text="${joke.text2}">Texto 2</td>
+		<td th:text="${joke.category != null ? joke.category.name : 'Sin categoría'}"></td>
+		<td th:text="${joke.type != null ? joke.type.name : 'Sin tipo'}"></td>
+	    <td>
+	      <a th:href="@{'/jokes/form/' + ${joke.id}}">Editar</a> |
+	      <a th:href="@{'/jokes/delete/' + ${joke.id}}"
+	         onclick="return confirm('¿Seguro que deseas eliminar este chiste?');">Eliminar</a>
+	    </td>
+	  </tr>
+	</tbody>
+  </table>
+</body>
+</html>
