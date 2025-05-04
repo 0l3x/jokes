@@ -1,10 +1,7 @@
 package olex.controllers;
 
 import olex.models.entity.Joke;
-import olex.services.FlagService;
-import olex.services.JokeService;
-import olex.services.CategoryService;
-import olex.services.TypeService;
+import olex.services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +23,9 @@ public class JokeViewController {
 
     @Autowired
     private TypeService typeService;
+    
+    @Autowired
+    private LanguageService languageService;
 
     @GetMapping
     public String listar(Model model) {
@@ -41,6 +41,7 @@ public class JokeViewController {
         model.addAttribute("flags", flagService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("types", typeService.findAll());
+        model.addAttribute("languages", languageService.findAll());
         return "jokes/form";
     }
 
@@ -52,6 +53,7 @@ public class JokeViewController {
         model.addAttribute("flags", flagService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("types", typeService.findAll());
+        model.addAttribute("languages", languageService.findAll());
         return "jokes/form";
     }
 
@@ -63,7 +65,7 @@ public class JokeViewController {
 
         joke.setCategory(categoryService.findById(categoryId));
         joke.setType(typeService.findById(typeId));
-//        joke.setLanguage(languageService.findById(languageId)); // si lo necesitas
+        joke.setLanguage(languageService.findById(languageId)); // si lo necesitas
 
         jokeService.save(joke);
         return "redirect:/jokes";

@@ -15,21 +15,36 @@
 
     <label>Texto 2:</label>
     <input type="text" th:field="*{text2}" required/><br/>
+    
+        <label>Categoría:</label>
+<select th:field="*{category.id}" required>
+  <option value="" disabled selected>Selecciona una categoría</option>
+  <option th:each="cat : ${categories}"
+          th:value="${cat.id}"
+          th:text="${cat.category}">
+  </option>
+</select><br/>
 
-    <label>Categoría:</label>
-    <select th:field="*{category}">
-      <option th:each="c : ${categories}" th:value="${c}" th:text="${c.name}">Categoría</option>
-    </select><br/>
+<label>Tipo:</label>
+<select th:field="*{type.id}" required>
+  <option value="" disabled selected>Selecciona un tipo</option>
+  <option th:each="t : ${types}"
+          th:value="${t.id}"
+          th:text="${t.type}">
+  </option>
+</select><br/>
 
-    <label>Tipo:</label>
-    <select th:field="*{type}">
-      <option th:each="t : ${types}" th:value="${t}" th:text="${t.name}">Tipo</option>
-    </select><br/>
+<label>Idioma:</label>
+  <select th:field="*{language.id}" required>
+    <option value="" disabled selected>Selecciona un idioma</option>
+    <option th:each="lang : ${languages}"
+            th:value="${lang.id}"
+            th:text="${lang.language}">
+    </option>
+  </select><br/>
 
     <button type="submit">Guardar</button>
     <a th:href="@{/jokes}">Cancelar</a>
   </form>
-
-
 </body>
 </html>

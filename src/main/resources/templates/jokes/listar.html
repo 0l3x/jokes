@@ -25,8 +25,8 @@
 	    <td th:text="${joke.id}">1</td>
 	    <td th:text="${joke.text1}">Texto 1</td>
 	    <td th:text="${joke.text2}">Texto 2</td>
-		<td th:text="${joke.category != null ? joke.category.name : 'Sin categoría'}"></td>
-		<td th:text="${joke.type != null ? joke.type.name : 'Sin tipo'}"></td>
+		<td th:text="${joke.category != null ? joke.category.category : 'Sin categoría'}"></td>
+		<td th:text="${joke.type != null ? joke.type.type : 'Sin tipo'}"></td>
 	    <td>
 	      <a th:href="@{'/jokes/form/' + ${joke.id}}">Editar</a> |
 	      <a th:href="@{'/jokes/delete/' + ${joke.id}}"

@@ -16,11 +16,13 @@ public class Category {
 
     private String category;
 
-    private String name;
+	public String getCategory() {
+		return category;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Integer getId() {
+		return id;
+	}
 
 }
 

@@ -16,11 +16,13 @@ public class Type {
 
     private String type;
 
-    private String name;
+	public String getType() {
+		return type;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Integer getId() {
+		return id;
+	}
 
 }
 

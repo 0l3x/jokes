@@ -16,7 +16,11 @@ public class Language {
 
     private String code;
     private String language;
-
-    // Getters y setters
+	public String getLanguage() {
+		return language;
+	}
+	public Integer getId() {
+		return id;
+	}
 }
 
