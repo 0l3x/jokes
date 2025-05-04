@@ -1,5 +1,6 @@
 package olex.controllers;
 
+import olex.dto.JokeCreateRequest;
 import olex.dto.JokeDTO;
 import olex.models.entity.Joke;
 import olex.repository.CategoryRepository;
@@ -45,27 +46,29 @@ public class JokeRestController {
     }
 
     // POST - create a new joke and return as DTO
-    @PostMapping	
-    public Joke createJoke(@RequestBody Joke joke) {
-        joke.setCategory(categoryRepository.findById(joke.getCategory().getId()).orElse(null));
-        joke.setType(typeRepository.findById(joke.getType().getId()).orElse(null));
-        joke.setLanguage(languageRepository.findById(joke.getLanguage().getId()).orElse(null));
+    @PostMapping
+    public Joke createJoke(@RequestBody JokeCreateRequest dto) {
+        Joke joke = new Joke();
+        joke.setText1(dto.getText1());
+        joke.setText2(dto.getText2());
+        joke.setCategory(categoryRepository.findById(dto.getCategory()).orElse(null));
+        joke.setType(typeRepository.findById(dto.getType()).orElse(null));
+        joke.setLanguage(languageRepository.findById(dto.getLanguage()).orElse(null));
         return jokeRepository.save(joke);
     }
 
-
     // PUT - update existing joke and return updated DTO
     @PutMapping("/{id}")
-    public JokeDTO updateJoke(@PathVariable Integer id, @RequestBody Joke jokeDetails) {
+    public JokeDTO updateJoke(@PathVariable Integer id, @RequestBody JokeCreateRequest dto) {
         Joke joke = jokeRepository.findById(id).orElseThrow();
-        joke.setText1(jokeDetails.getText1());
-        joke.setText2(jokeDetails.getText2());
-        joke.setCategory(jokeDetails.getCategory());
-        joke.setType(jokeDetails.getType());
-        joke.setLanguage(jokeDetails.getLanguage());
-        Joke updated = jokeRepository.save(joke);
-        return new JokeDTO(updated);
+        joke.setText1(dto.getText1());
+        joke.setText2(dto.getText2());
+        joke.setCategory(categoryRepository.findById(dto.getCategory()).orElse(null));
+        joke.setType(typeRepository.findById(dto.getType()).orElse(null));
+        joke.setLanguage(languageRepository.findById(dto.getLanguage()).orElse(null));
+        return new JokeDTO(jokeRepository.save(joke));
     }
+
 
     @DeleteMapping("/{id}")
     public void deleteJoke(@PathVariable Integer id) {
