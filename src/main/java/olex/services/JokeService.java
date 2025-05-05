@@ -39,4 +39,8 @@ public class JokeService {
         // Luego borra el chiste
         jokeRepository.deleteById(id);
     }
+
+	public Joke findById(Integer id) {
+		return jokeRepository.findById(id).orElseThrow();
+	}
 }

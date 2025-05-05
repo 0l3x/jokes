@@ -14,8 +14,8 @@ import olex.repository.JokeRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jokeflags")
-public class JokeFlagController {
+@RequestMapping("/api/jokesflags")
+public class JokeFlagRestController {
 
     @Autowired
     private JokeFlagRepository jokeFlagRepository;
@@ -26,23 +26,22 @@ public class JokeFlagController {
     @Autowired
     private FlagRepository flagRepository;
 
+    // Obtener todos los enlaces joke-flag
     @GetMapping
-    public List<JokeFlag> getAll() {
+    public List<JokeFlag> findAll() {
         return jokeFlagRepository.findAll();
     }
 
+    // Crear una relación
     @PostMapping
     public JokeFlag create(@RequestParam Integer jokeId, @RequestParam Integer flagId) {
-        Joke joke = jokeRepository.findById(jokeId).orElseThrow();
-        Flag flag = flagRepository.findById(flagId).orElseThrow();
-
-        JokeFlag jokeFlag = new JokeFlag();
-        jokeFlag.setJoke(joke);
-        jokeFlag.setFlag(flag);
-
-        return jokeFlagRepository.save(jokeFlag);
+        JokeFlag jf = new JokeFlag();
+        jf.setJoke(jokeRepository.findById(jokeId).orElseThrow());
+        jf.setFlag(flagRepository.findById(flagId).orElseThrow());
+        return jokeFlagRepository.save(jf);
     }
 
+    // Eliminar una relación
     @DeleteMapping
     public void delete(@RequestParam Integer jokeId, @RequestParam Integer flagId) {
         JokeFlagId id = new JokeFlagId();

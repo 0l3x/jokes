@@ -1,7 +1,10 @@
 package olex.controllers;
 
+import olex.models.entity.Flag;
 import olex.models.entity.Joke;
 import olex.services.*;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,9 @@ public class JokeViewController {
     
     @Autowired
     private LanguageService languageService;
+    
+    @Autowired
+    private JokeFlagService jokeFlagService;
 
     @GetMapping
     public String listar(Model model) {
@@ -77,4 +83,32 @@ public class JokeViewController {
         jokeService.deleteById(id);
         return "redirect:/jokes";
     }
+    
+    @GetMapping("/{id}/flags")
+    public String gestionarFlags(@PathVariable Integer id, Model model) {
+        Joke joke = jokeService.findById(id);
+        List<Flag> allFlags = flagService.findAll();
+        List<Flag> assigned = jokeFlagService.findFlagsByJokeId(id); // necesitas este método
+        List<Flag> available = allFlags.stream()
+            .filter(f -> !assigned.contains(f))
+            .toList();
+
+        model.addAttribute("joke", joke);
+        model.addAttribute("assignedFlags", assigned);
+        model.addAttribute("availableFlags", available);
+        return "jokes/flags";
+    }
+
+    @PostMapping("/{id}/flags/add")
+    public String asignarFlag(@PathVariable Integer id, @RequestParam Integer flagId) {
+        jokeFlagService.addFlagToJoke(id, flagId); // necesitas este método
+        return "redirect:/jokes/" + id + "/flags";
+    }
+
+    @GetMapping("/{id}/flags/remove")
+    public String eliminarFlag(@PathVariable Integer id, @RequestParam Integer flagId) {
+        jokeFlagService.removeFlagFromJoke(id, flagId); // necesitas este método
+        return "redirect:/jokes/" + id + "/flags";
+    }
+
 }

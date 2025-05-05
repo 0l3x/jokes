@@ -1,10 +1,15 @@
 package olex.models.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -30,6 +35,14 @@ public class Joke {
     @ManyToOne
     @JoinColumn(name = "language_id")
     private Language language;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "jokes_flags",
+        joinColumns = @JoinColumn(name = "joke_id"),
+        inverseJoinColumns = @JoinColumn(name = "flag_id")
+    )
+    private Set<Flag> flags = new HashSet<>();
 
 	public Integer getId() {
 		return id;
@@ -78,4 +91,12 @@ public class Joke {
 	public void setLanguage(Language language) {
 		this.language = language;
 	}    
+	
+	public Set<Flag> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(Set<Flag> flags) {
+        this.flags = flags;
+    }
 }
