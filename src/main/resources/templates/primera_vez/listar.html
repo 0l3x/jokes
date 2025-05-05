@@ -26,8 +26,7 @@
         <td th:text="${pv.id}">1</td>
         <td th:text="${pv.programa}">Nombre</td>
         <td th:text="${pv.fechaEmision}">2024-05-01</td>
-        <td th:text="${pv.joke.text1}">Texto del chiste</td>
-        <td>
+		<td th:text="${pv.joke != null} ? ${pv.joke.text1} : 'Sin chiste'">Texto del chiste</td>        <td>
           <ul>
             <li th:each="t : ${pv.telefonos}" th:text="${t.numero}">000000000</li>
           </ul>

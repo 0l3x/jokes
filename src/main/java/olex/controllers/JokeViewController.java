@@ -2,7 +2,9 @@ package olex.controllers;
 
 import olex.models.entity.Flag;
 import olex.models.entity.Joke;
+import olex.models.entity.PrimeraVez;
 import olex.repository.JokeRepository;
+import olex.repository.PrimeraVezRepository;
 import olex.services.*;
 
 import java.util.List;
@@ -36,6 +38,9 @@ public class JokeViewController {
     
     @Autowired
     private JokeRepository jokeRepository;
+    
+    @Autowired
+    private PrimeraVezRepository primeraVezRepository;
 
     @GetMapping
     public String listar(Model model) {
@@ -84,7 +89,17 @@ public class JokeViewController {
 
     @GetMapping("/delete/{id}")
     public String eliminar(@PathVariable Long id) {
-        jokeService.deleteById(id);
+    	Joke joke = jokeRepository.findById(id).orElse(null);
+        if (joke != null) {
+            // Rompe las relaciones con PrimeraVez antes de eliminarse
+            List<PrimeraVez> apariciones = primeraVezRepository.findByJoke(joke);
+            apariciones.forEach(pv -> {
+                pv.setJoke(null); // Rompe la relación
+                primeraVezRepository.save(pv);
+            });
+
+            jokeRepository.delete(joke); // Ahora sí se puede eliminar
+        }
         return "redirect:/jokes";
     }
     
