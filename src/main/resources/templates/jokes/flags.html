@@ -15,7 +15,6 @@
     <p><strong>Texto 2:</strong> <span th:text="${joke.text2}"></span></p>
   </div>
 
-  <!-- Lista de flags asociados -->
   <h2>Flags actuales:</h2>
 	<ul>
 	    <li th:each="flag : ${assignedFlags}">
@@ -24,7 +23,6 @@
 	    </li>
 	</ul>
 
-  <!-- Formulario para añadir nuevos flags -->
   <h3>Añadir nuevo flag:</h3>
 	<form th:action="@{|/jokes/${joke.id}/flags/add|}" method="post">
 	    <select name="flagId" required>

@@ -33,7 +33,7 @@ public class JokeRestController {
     @Autowired
     private LanguageRepository languageRepository;
 
-    // GET all jokes as DTOs
+    // GET de jokes como DTO
     @GetMapping
     public ResponseEntity<List<JokeDTO>> getAllJokes() {
         List<JokeDTO> jokes = jokeRepository.findAll().stream()
@@ -42,7 +42,7 @@ public class JokeRestController {
         return ResponseEntity.ok(jokes);
     }
 
-    // GET one joke as DTO
+    // GET de un joke específico como DTO
     @GetMapping("/{id}")
     public ResponseEntity<JokeDTO> getJokeById(@PathVariable Integer id) {
         Joke joke = jokeRepository.findById(id)
@@ -51,7 +51,7 @@ public class JokeRestController {
         return ResponseEntity.ok(new JokeDTO(joke));
     }
 
-    // POST - create a new joke and return as DTO
+    // POST - crea un chiste y devuelve el DTO creado
     @PostMapping
     public ResponseEntity<?> createJoke(@RequestBody JokeCreateRequest dto) {
         if (dto.getText1() == null || dto.getText2() == null) {
@@ -69,7 +69,7 @@ public class JokeRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new JokeDTO(saved));
     }
 
-    // PUT - update existing joke and return updated DTO
+    // PUT - actualiza un chiste y devuelve el DTO actualizado
     @PutMapping("/{id}")
     public ResponseEntity<?> updateJoke(@PathVariable Integer id, @RequestBody JokeCreateRequest dto) {
         return jokeRepository.findById(id).map(joke -> {
@@ -94,6 +94,7 @@ public class JokeRestController {
         return ResponseEntity.ok("Joke eliminado correctamente.");
     }
     
+    // GET - búsqueda de chistes por texto
     @GetMapping("/search")
     public ResponseEntity<List<JokeDTO>> searchJokes(@RequestParam String text) {
         List<JokeDTO> results = jokeRepository.findByText1ContainingIgnoreCase(text).stream()

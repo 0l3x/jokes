@@ -26,13 +26,13 @@ public class JokeFlagRestController {
     @Autowired
     private FlagRepository flagRepository;
 
-    // Obtener todos los enlaces joke-flag
+    // Obtiene todos los enlaces joke-flag
     @GetMapping
     public List<JokeFlag> findAll() {
         return jokeFlagRepository.findAll();
     }
 
-    // Crear una relación
+    // Crea una relación
     @PostMapping
     public JokeFlag create(@RequestParam Integer jokeId, @RequestParam Integer flagId) {
         JokeFlag jf = new JokeFlag();
@@ -41,7 +41,7 @@ public class JokeFlagRestController {
         return jokeFlagRepository.save(jf);
     }
 
-    // Eliminar una relación
+    // Elimina una relación
     @DeleteMapping
     public void delete(@RequestParam Integer jokeId, @RequestParam Integer flagId) {
         JokeFlagId id = new JokeFlagId();

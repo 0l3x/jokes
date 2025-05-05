@@ -29,6 +29,7 @@ public interface JokeRepository extends JpaRepository<Joke, Integer> {
 	
 	List<Joke> findByText1ContainingIgnoreCase(String text);
 	
+	// 0.5p
 	@Query("SELECT j FROM Joke j WHERE j.primeraVez IS NULL")
 	List<Joke> findAllWithoutPrimeraVez();
 

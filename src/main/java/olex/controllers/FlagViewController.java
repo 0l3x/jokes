@@ -50,6 +50,4 @@ public class FlagViewController {
 		flagService.deleteById(id);
 		return "redirect:/flags";
 	}
-
-
 }

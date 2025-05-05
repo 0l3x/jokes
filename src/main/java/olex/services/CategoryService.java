@@ -43,7 +43,7 @@ public class CategoryService {
 	    if (category != null) {
 	        List<Joke> jokesConCategoria = jokeRepository.findByCategory(category);
 	        for (Joke joke : jokesConCategoria) {
-	            joke.setCategory(null); // si se permite null en la columna
+	            joke.setCategory(null);
 	            jokeRepository.save(joke);
 	        }
 	        categoryRepository.delete(category);

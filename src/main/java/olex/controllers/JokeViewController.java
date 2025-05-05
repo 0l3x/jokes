@@ -75,7 +75,7 @@ public class JokeViewController {
 
         joke.setCategory(categoryService.findById(categoryId));
         joke.setType(typeService.findById(typeId));
-        joke.setLanguage(languageService.findById(languageId)); // si lo necesitas
+        joke.setLanguage(languageService.findById(languageId)); 
 
         jokeService.save(joke);
         return "redirect:/jokes";
@@ -92,7 +92,7 @@ public class JokeViewController {
     public String gestionarFlags(@PathVariable Integer id, Model model) {
         Joke joke = jokeService.findById(id);
         List<Flag> allFlags = flagService.findAll();
-        List<Flag> assigned = jokeFlagService.findFlagsByJokeId(id); // necesitas este método
+        List<Flag> assigned = jokeFlagService.findFlagsByJokeId(id); 
         List<Flag> available = allFlags.stream()
             .filter(f -> !assigned.contains(f))
             .toList();
@@ -105,13 +105,13 @@ public class JokeViewController {
 
     @PostMapping("/{id}/flags/add")
     public String asignarFlag(@PathVariable Integer id, @RequestParam Integer flagId) {
-        jokeFlagService.addFlagToJoke(id, flagId); // necesitas este método
+        jokeFlagService.addFlagToJoke(id, flagId); 
         return "redirect:/jokes/" + id + "/flags";
     }
 
     @GetMapping("/{id}/flags/remove")
     public String eliminarFlag(@PathVariable Integer id, @RequestParam Integer flagId) {
-        jokeFlagService.removeFlagFromJoke(id, flagId); // necesitas este método
+        jokeFlagService.removeFlagFromJoke(id, flagId); 
         return "redirect:/jokes/" + id + "/flags";
     }
     

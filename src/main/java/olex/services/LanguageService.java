@@ -35,13 +35,13 @@ public class LanguageService {
     public void deleteById(Integer id) {
         Language language = languageRepository.findById(id).orElse(null);
         if (language != null) {
-            // Desasociar el idioma de todos los chistes
+            // Desasocia el idioma de todos los chistes
             jokeRepository.findByLanguage(language).forEach(joke -> {
                 joke.setLanguage(null);
                 jokeRepository.save(joke);
             });
 
-            // eliminar el idioma
+            // luego elimina el idioma
             languageRepository.delete(language);
         }
     }

@@ -4,6 +4,7 @@ import olex.dto.FlagDTO;
 import olex.models.entity.Flag;
 import olex.repository.FlagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,4 +44,5 @@ public class FlagRestController {
     public void delete(@PathVariable Integer id) {
         flagRepository.deleteById(id);
     }
+    
 }

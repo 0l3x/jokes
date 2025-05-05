@@ -22,7 +22,7 @@ public class JokeFlagViewController {
         Joke joke = jokeRepository.findById(id).orElseThrow();
         model.addAttribute("joke", joke);
 
-        // Flags ya asignados
+        // muestra flags ya asignados al chiste
         var assigned = jokeFlagRepository.findAll().stream()
                 .filter(jf -> jf.getJoke().getId().equals(id))
                 .map(JokeFlag::getFlag)

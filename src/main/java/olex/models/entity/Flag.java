@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-//Flag.java
 @Entity
 @Table(name = "flags")
 public class Flag {
