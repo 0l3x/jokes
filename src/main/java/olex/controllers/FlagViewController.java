@@ -1,8 +1,7 @@
 package olex.controllers;
 
 import olex.models.entity.Flag;
-import olex.repository.FlagRepository;
-
+import olex.services.FlagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,36 +12,44 @@ import org.springframework.web.bind.annotation.*;
 public class FlagViewController {
 
     @Autowired
-    private FlagRepository flagRepository;
+    private FlagService flagService;
 
     @GetMapping
-    public String listFlags(Model model) {
-        model.addAttribute("flags", flagRepository.findAll());
-        return "flags/list";
+    public String listar(Model model) {
+        model.addAttribute("titulo", "Listado de flags");
+        model.addAttribute("flags", flagService.findAll());
+        return "flags/listar";
     }
 
-    @GetMapping("/new")
-    public String newFlag(Model model) {
+    @GetMapping("/form")
+    public String crear(Model model) {
+        model.addAttribute("titulo", "Crear flag");
         model.addAttribute("flag", new Flag());
         return "flags/form";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editFlag(@PathVariable Integer id, Model model) {
-        model.addAttribute("flag", flagRepository.findById(id).orElseThrow());
-        return "flags/form";
-    }
-
-    @PostMapping("/save")
-    public String saveFlag(@ModelAttribute Flag flag) {
-        flagRepository.save(flag);
+    @PostMapping("/form")
+    public String guardar(@ModelAttribute Flag flag) {
+        flagService.save(flag);
         return "redirect:/flags";
     }
-
+    
+    @GetMapping("/form/{id}")
+    public String editar(@PathVariable Integer id, Model model) {
+        Flag flag = flagService.findById(id);
+        if (flag != null) {
+            model.addAttribute("titulo", "Editar flag");
+            model.addAttribute("flag", flag);
+            return "flags/form";
+        }
+        return "redirect:/flags";
+    }
+    
     @GetMapping("/delete/{id}")
-    public String deleteFlag(@PathVariable Integer id) {
-        flagRepository.deleteById(id);
-        return "redirect:/flags";
-    }
-}
+	public String eliminar(@PathVariable Integer id) {
+		flagService.deleteById(id);
+		return "redirect:/flags";
+	}
 
+
+}

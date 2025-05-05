@@ -2,26 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title th:text="${titulo}">Formulario</title>
+  <title th:text="${titulo}">Crear Flag</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1 th:text="${titulo}">Formulario</h1>
+<body class="container py-4">
+  <h1 class="mb-4" th:text="${titulo}">Crear Flag</h1>
 
-  <form th:action="@{/jokes/form}" th:object="${joke}" method="post">
+  <form th:action="@{/flags/form}" th:object="${flag}" method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <label>Text1: <input type="text" th:field="*{text1}" /></label><br/>
-    <label>Text2: <input type="text" th:field="*{text2}" /></label><br/>
+    <div class="mb-3">
+      <label for="flag" class="form-label">Nombre del Flag:</label>
+      <input type="text" class="form-control" th:field="*{name}" id="flag" required />
+    </div>
 
-    <label>Flag:
-      <select th:field="*{flag.id}">
-        <option th:each="flag : ${flags}" th:value="${flag.id}" th:text="${flag.name}"></option>
-      </select>
-    </label><br/>
-
-    <button type="submit">Guardar</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a th:href="@{/flags}" class="btn btn-secondary">Cancelar</a>
   </form>
-
-  <a th:href="@{/jokes}">Volver al listado</a>
 </body>
 </html>

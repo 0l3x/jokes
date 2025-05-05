@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title th:text="${titulo}">Listado</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1 th:text="${titulo}">Listado</h1>
+<body class="container py-4">
+  <h1 class="mb-4" th:text="${titulo}">Listado de flags</h1>
 
-  <a th:href="@{/jokes/form}">Crear nuevo chiste</a>
+  <a th:href="@{/flags/form}" class="btn btn-success mb-3">Crear nuevo flag</a>
 
-  <table border="1">
-    <thead>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
       <tr>
         <th>ID</th>
-        <th>Text1</th>
-        <th>Text2</th>
+        <th>Flag</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr th:each="joke : ${jokes}">
-        <td th:text="${joke.id}">1</td>
-        <td th:text="${joke.text1}">Texto 1</td>
-        <td th:text="${joke.text2}">Texto 2</td>
+      <tr th:each="flag : ${flags}">
+        <td th:text="${flag.id}">1</td>
+        <td th:text="${flag.name}">flag text</td>
         <td>
-          <a th:href="@{/jokes/form/{id}(id=${joke.id})}">Editar</a>
-          <a th:href="@{/jokes/delete/{id}(id=${joke.id})}" onclick="return confirm('¿Seguro que quieres eliminarlo?')">Eliminar</a>
+          <a th:href="@{'/flags/form/' + ${flag.id}}" class="btn btn-warning btn-sm">Editar</a>
+          <a th:href="@{'/flags/delete/' + ${flag.id}}"
+             onclick="return confirm('¿Seguro que deseas eliminar este flag?');"
+             class="btn btn-danger btn-sm">Eliminar</a>
         </td>
       </tr>
     </tbody>
