@@ -1,5 +1,7 @@
 package olex.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,8 @@ public class Category {
     
     @Column(name = "category", nullable = false)
     private String name;
-
+    
+	@JsonIgnore
 	public String getName() {
 		return name;
 	}
@@ -33,9 +36,13 @@ public class Category {
 	public void setName(String category) {
 		this.name = category;
 	}
-
+	
 	public String getCategory() {
 		return name;
+	}
+	
+	public void setCategory(String category) {
+		this.name = category;
 	}
 
 }

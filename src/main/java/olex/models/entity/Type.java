@@ -1,5 +1,7 @@
 package olex.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,8 @@ public class Type {
     
     @Column(name = "type")
     private String name; 
-
+    
+    @JsonIgnore
     public String getName() {
         return name;
     }
@@ -30,6 +33,15 @@ public class Type {
 	public Integer getId() {
 		return id;
 	}
+
+
+	public String getType() {
+		return name;
+	}
+	
+	public void setType(String type) {
+        this.name = type;
+    }
 
 }
 

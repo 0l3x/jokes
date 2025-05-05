@@ -20,6 +20,11 @@ public class CategoryRestController {
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
+    
+    @GetMapping("/{id}")
+    public Category findById(@PathVariable Integer id) {
+        return categoryRepository.findById(id).orElse(null);
+    }
 
     @PostMapping
     public Category create(@RequestBody Category category) {
