@@ -2,6 +2,7 @@ package olex.controllers;
 
 import olex.models.entity.Flag;
 import olex.models.entity.Joke;
+import olex.repository.JokeRepository;
 import olex.services.*;
 
 import java.util.List;
@@ -32,6 +33,9 @@ public class JokeViewController {
     
     @Autowired
     private JokeFlagService jokeFlagService;
+    
+    @Autowired
+    private JokeRepository jokeRepository;
 
     @GetMapping
     public String listar(Model model) {
@@ -110,5 +114,23 @@ public class JokeViewController {
         jokeFlagService.removeFlagFromJoke(id, flagId); // necesitas este método
         return "redirect:/jokes/" + id + "/flags";
     }
+    
+    @GetMapping("/search")
+    public String buscarPorTexto(@RequestParam("text") String text, Model model) {
+        List<Joke> jokes = jokeRepository.findByText1ContainingIgnoreCase(text);
+        model.addAttribute("titulo", "Resultados de búsqueda");
+        model.addAttribute("jokes", jokes);
+        return "jokes/listar";
+    }
+    
+    @GetMapping("/sin-primera-vez")
+    public String listarSinPrimeraVez(Model model) {
+        List<Joke> jokes = jokeRepository.findAllWithoutPrimeraVez();
+        model.addAttribute("titulo", "Chistes sin aparición en TV");
+        model.addAttribute("jokes", jokes);
+        return "jokes/listar"; 
+    }
+
+
 
 }

@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,6 +44,9 @@ public class Joke {
         inverseJoinColumns = @JoinColumn(name = "flag_id")
     )
     private Set<Flag> flags = new HashSet<>();
+    
+    @OneToOne(mappedBy = "joke")
+    private PrimeraVez primeraVez;
 
 	public Integer getId() {
 		return id;

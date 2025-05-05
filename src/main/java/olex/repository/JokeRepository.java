@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -26,5 +27,10 @@ public interface JokeRepository extends JpaRepository<Joke, Integer> {
 
 	List<Joke> findByType(Type type);
 	
+	List<Joke> findByText1ContainingIgnoreCase(String text);
+	
+	@Query("SELECT j FROM Joke j WHERE j.primeraVez IS NULL")
+	List<Joke> findAllWithoutPrimeraVez();
+
 	
 }
