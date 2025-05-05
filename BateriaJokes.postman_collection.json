@@ -1,0 +1,755 @@
+{
+	"info": {
+		"_postman_id": "33fcebf8-e0ad-4aae-b179-ad122479f2ab",
+		"name": "BateriaJokes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39880733"
+	},
+	"item": [
+		{
+			"name": "GET jokes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jokes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jokes/1000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST joke",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text1\": \"chiste1\",\r\n  \"text2\": \"respuesta2\",\r\n  \"category\": 1,\r\n  \"type\": 1,\r\n  \"language\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/jokes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT joke",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text1\": \"chiste1\",\r\n  \"text2\": \"respuesta2\",\r\n  \"category\": 1,\r\n  \"type\": 2,\r\n  \"language\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/jokes/1000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE joke",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jokes/1034",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes",
+						"1034"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET flags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/flags",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET flag por ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/flags/9",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flags",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST flag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"prueba3\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/flags",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT flag",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"joseluis\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/flags/16",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flags",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE flag",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/flags/9",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flags",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET joke_flags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/jokesflags",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokesflags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST jokeflags",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/jokesflags?jokeId=7&flagId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokesflags"
+					],
+					"query": [
+						{
+							"key": "jokeId",
+							"value": "7"
+						},
+						{
+							"key": "flagId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE jokeflag",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/jokesflags?jokeId=7&flagId=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokesflags"
+					],
+					"query": [
+						{
+							"key": "jokeId",
+							"value": "7"
+						},
+						{
+							"key": "flagId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET category por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/categories/14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"beat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT category",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"eureca\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/categories/16",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE category",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/categories/15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET type por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/types/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST type",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"triple\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT type",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"unico\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/types/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE type",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/types/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"types",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET languages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/languages",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"languages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET language por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/languages/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"languages",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST language",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"code\": \"yeah\",\r\n    \"language\": \"oporto\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/languages",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"languages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT language",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"language\": \"luis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/languages/13",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"languages",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE language",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/languages/12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"languages",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH texto1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/jokes/search?text=ChisTE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jokes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "ChisTE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET primeraVez",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/primera_vez",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"primera_vez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST primera vez",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"programa\": \"Late Show\",\r\n  \"fechaEmision\": \"2025-05-05\",\r\n  \"joke\": {\r\n    \"id\": 999\r\n  },\r\n  \"telefonos\": [\r\n    {\r\n      \"numero\": \"123456789\"\r\n    },\r\n    {\r\n      \"numero\": \"987654321\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/primera_vez",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"primera_vez"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
