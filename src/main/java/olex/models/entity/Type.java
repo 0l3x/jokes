@@ -1,5 +1,6 @@
 package olex.models.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,12 +14,18 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    @Column(name = "type")
+    private String name; 
 
-    private String type;
-
-	public String getType() {
-		return type;
-	}
+    public String getName() {
+        return name;
+    }
+    
+    
+    public void setName(String type) {
+        this.name = type;
+    }
 
 	public Integer getId() {
 		return id;

@@ -10,6 +10,7 @@
   <h1 class="mb-4" th:text="${titulo}">Listado de chistes</h1>
 
   <a th:href="@{/jokes/form}" class="btn btn-primary mb-3">Crear nuevo chiste</a>
+  <a th:href="@{/}" class="btn btn-secondary mb-3">Volver al inicio</a>
 
   <table class="table table-bordered table-hover">
     <thead class="table-dark">
@@ -29,7 +30,7 @@
         <td th:text="${joke.text1}">Texto 1</td>
         <td th:text="${joke.text2}">Texto 2</td>
         <td th:text="${joke.category != null ? joke.category.category : 'Sin categoría'}"></td>
-        <td th:text="${joke.type != null ? joke.type.type : 'Sin tipo'}"></td>
+        <td th:text="${joke.type != null ? joke.type.name : 'Sin tipo'}"></td>
         <td th:text="${joke.language != null ? joke.language.language : 'Sin idioma'}"></td>
         <td>
           <a th:href="@{'/jokes/flags/' + ${joke.id}}" class="btn btn-info btn-sm">Flags</a>

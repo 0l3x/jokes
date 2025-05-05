@@ -8,4 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TypeRepository extends JpaRepository<Type, Long> {
 
-	Optional<Type> findById(Integer typeId);}
+	Optional<Type> findById(Integer typeId);
+
+	void deleteById(Integer id);}
+
+
+

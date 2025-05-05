@@ -1,10 +1,14 @@
 package olex.services;
 
 import olex.models.entity.Category;
+import olex.models.entity.Joke;
 import olex.repository.CategoryRepository;
+import olex.repository.JokeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -13,6 +17,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private JokeRepository jokeRepository;
 
     public List<Category> findAll() {
         return categoryRepository.findAll();
@@ -29,13 +36,18 @@ public class CategoryService {
 	public void save(Category category) {
 		categoryRepository.save(category);
 	}
-
-	public void delete(Long id) {
-		categoryRepository.deleteById(id);
-	}
-
+	
+	@Transactional
 	public void delete(Integer id) {
-		categoryRepository.deleteById(id);
+		Category category = categoryRepository.findById(id).orElse(null);
+	    if (category != null) {
+	        List<Joke> jokesConCategoria = jokeRepository.findByCategory(category);
+	        for (Joke joke : jokesConCategoria) {
+	            joke.setCategory(null); // si se permite null en la columna
+	            jokeRepository.save(joke);
+	        }
+	        categoryRepository.delete(category);
+	    }
 	}
 }
 

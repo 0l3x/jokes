@@ -34,7 +34,7 @@
       <label class="form-label">Tipo:</label>
       <select class="form-select" th:field="*{type.id}" required>
         <option value="" disabled selected>Selecciona un tipo</option>
-        <option th:each="t : ${types}" th:value="${t.id}" th:text="${t.type}"></option>
+        <option th:each="t : ${types}" th:value="${t.id}" th:text="${t.name}"></option>
       </select>
     </div>
 

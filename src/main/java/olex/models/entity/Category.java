@@ -1,5 +1,6 @@
 package olex.models.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,15 +14,28 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    @Column(name = "category", nullable = false)
+    private String name;
 
-    private String category;
-
-	public String getCategory() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public void setName(String category) {
+		this.name = category;
+	}
+
+	public String getCategory() {
+		return name;
 	}
 
 }

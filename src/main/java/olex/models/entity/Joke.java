@@ -25,15 +25,15 @@ public class Joke {
     private String text2;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "type_id", nullable = true)
     private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "language_id")
+    @JoinColumn(name = "language_id", nullable = true)
     private Language language;
     
     @ManyToMany
